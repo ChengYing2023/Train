@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --background-color: #1f242d;
+            --font-color: #0ef;
+        }
+
+        body {
+            background: var(--background-color);
+            /* position: relative; */
+        }
+
+        .titleWorld {
+            color: var(--font-color);
+            text-shadow: 0px 0px 10px rgb(193, 235, 235);
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-size: 6rem;
+            display: block;
+            margin-top: 200px;
+        }
+
+        .contextWorld {
+            color: var(--font-color);
+            text-shadow: 0px 0px 10px rgb(193, 235, 235);
+            font-family: sans-serif;
+            line-height: 200px;
+            font-size: 6rem;
+            top: 30%;
+            text-transform: uppercase;
+        }
+
+        .parent {
+            text-align: center;
+            width: 100%;
+            height: auto;
+            /* 水平置中 */
+            justify-content: center;
+            /* 垂直置中 */
+            align-content: center;
+        }
+
+        .child {
+            background-color: #0ef;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            /* margin: auto; */
+            transform: translate(-50%, -50%);
+            background: transparent;
+            border: 3px solid #3c3c3c;
+            text-align: center;
+            /* 行高 */
+            line-height: 200px;
+            /* 字型 */
+            font-family: sans-serif;
+            font-size: 20px;
+            color: #0ef;
+            /* 字與字的間隔 */
+            letter-spacing: 4px;
+            /* 變大寫 */
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--font-color);
+            margin-top: 100px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+        }
+
+        .child:before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--font-color);
+            border-right: 3px solid var(--font-color);
+            border-radius: 50%;
+            animation: animateC 2s linear infinite;
+        }
+
+        .ringT {
+            display: block;
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            width: 50%;
+            height: 4px;
+            background: transparent;
+            transform-origin: left;
+            animation: animate 2s linear infinite;
+        }
+
+        .ringT:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--font-color);
+            top: -6px;
+            right: -8px;
+            box-shadow: 0 0 20px var(--font-color);
+        }
+
+        h1 {
+            margin-top: 300px;
+            display: block;
+        }
+
+        @keyframes animateC {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(45deg);
+            }
+
+            100% {
+                transform: rotate(405deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent translate">
+        <span class="titleWorld">The server is busy</span><br>
+        <span class="contextWorld">Please wait, We will go to exam page.</span>
+        <div class="child">Loading<span class="ringT"></span></div>
+    </div>
+    <script>
+        let Second = 5;
+        (function () {
+            setInterval(() => {
+                Second--;
+            }, 1000);
+        })()
+    </script>
+</body>
+
+</html>
